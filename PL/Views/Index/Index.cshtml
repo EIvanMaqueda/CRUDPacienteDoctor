@@ -1,0 +1,61 @@
+﻿@model ML.Paciente
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="container">
+    <div class="row">
+        <h2>Usuario</h2>
+    </div>
+    <br />
+    <div class="row">
+        <div style="float:right">
+            @Html.ActionLink("Agregar", "Form", "Index", htmlAttributes: new { @class = "btn btn-success" })
+        </div>
+    </div>
+    <br />
+    <div class="row">
+        @if (Model.Pacientes != null)
+        {
+            //tabla
+            <table class="table table-bordered table-responsive">
+                <thead style="background-color: chartreuse">
+                    <tr>
+                        <td class="hidden">IdPaciente</td>
+                        <td class="text-center" style=" font-weight:bold;">Imagen</td>
+                        <td class="text-center" style=" font-weight:bold;">Nombre</td>
+                        <td class="text-center" style=" font-weight:bold;">Descripcion</td>
+                        <td class="text-center" style=" font-weight:bold;">Editar</td>
+                        <td class="text-center" style=" font-weight:bold;">Eliminar</td>
+
+                    </tr>
+                </thead>
+
+                <tbody>
+                    @foreach (ML.Paciente paciente in Model.Pacientes)
+                    {
+                        <tr>
+                            
+                            <td class="hidden">@paciente.IdPaciente</td>
+                            <td><img id="Img" src="data:image/*;base64,@paciente.Imagen" style="width:50px ; height:50px" /></td>
+                            <td>@paciente.Nombre</td>
+                            <td>@paciente.Descripcion</td>
+                            
+                      
+                            <td class="text-center"><a class="btn btn-warning glyphicon glyphicon-edit" href="@Url.Action("Form", "Usuario", new { IdUsuario = usuario.IdUsuario })"></a></td>
+                            <td class="text-center"><a class="btn btn-danger glyphicon glyphicon-trash" href="@Url.Action("Delete", "Usuario", new { IdUsuario = usuario.IdUsuario })" onclick="return confirm('Estas seguro que deseas eliminar este registro?');"></a></td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+
+
+        }
+        else
+        {
+            <div class="alert alert-danger" role="alert">Ocurrio un error al realizar la consulta </div>
+        }
+    </div>
+</div>
+
