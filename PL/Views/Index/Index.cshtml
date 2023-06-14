@@ -6,7 +6,7 @@
 
 <div class="container">
     <div class="row">
-        <h2>Usuario</h2>
+        <h2>Paciente</h2>
     </div>
     <br />
     <div class="row">
@@ -28,6 +28,7 @@
                         <td class="text-center" style=" font-weight:bold;">Descripcion</td>
                         <td class="text-center" style=" font-weight:bold;">Editar</td>
                         <td class="text-center" style=" font-weight:bold;">Eliminar</td>
+                        <td class="text-center" style=" font-weight:bold;">Cita</td>
 
                     </tr>
                 </thead>
@@ -36,15 +37,14 @@
                     @foreach (ML.Paciente paciente in Model.Pacientes)
                     {
                         <tr>
-                            
+
                             <td class="hidden">@paciente.IdPaciente</td>
                             <td><img id="Img" src="data:image/*;base64,@paciente.Imagen" style="width:50px ; height:50px" /></td>
                             <td>@paciente.Nombre</td>
                             <td>@paciente.Descripcion</td>
-                            
-                      
-                            <td class="text-center"><a class="btn btn-warning glyphicon glyphicon-edit" href="@Url.Action("Form", "Usuario", new { IdUsuario = usuario.IdUsuario })"></a></td>
-                            <td class="text-center"><a class="btn btn-danger glyphicon glyphicon-trash" href="@Url.Action("Delete", "Usuario", new { IdUsuario = usuario.IdUsuario })" onclick="return confirm('Estas seguro que deseas eliminar este registro?');"></a></td>
+                            <td class="text-center"><a class="btn btn-warning glyphicon glyphicon-edit" href="@Url.Action("Form", "Index", new { IdPaciente = paciente.IdPaciente })"></a></td>
+                            <td class="text-center"><a class="btn btn-danger glyphicon glyphicon-trash" href="@Url.Action("Delete", "Index", new { IdPaciente = paciente.IdPaciente })" onclick="return confirm('Estas seguro que deseas eliminar este registro?');"></a></td>
+                            <td class="text-center"><button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#myModal">Agregar Cita</button></td>
                         </tr>
                     }
                 </tbody>
@@ -56,6 +56,63 @@
         {
             <div class="alert alert-danger" role="alert">Ocurrio un error al realizar la consulta </div>
         }
+    </div>
+
+    <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title" id="myModalLabel">Modal title</h4>
+                </div>
+                <div class="modal-body">
+
+                    <div class="form-group">
+
+                        <label>Nombre</label>
+                        <div class="input-group">
+                            <span class="input-group-addon" id="usernameicon"><i class="fa-solid fa-circle-user" style="color: chartreuse"></i></span>
+                            @Html.TextBoxFor(model => model.Nombre, new { @class = "form-control", @id = "txtUserName" })
+                        </div>
+
+                    </div>
+
+                    <div class="form-group">
+
+                        <label>Hora Inicio</label>
+                        <div class="input-group">
+                            <span class="input-group-addon" id="usernameicon"><i class="fa-solid fa-circle-user" style="color: chartreuse"></i></span>
+                            <input type="time" name="HoraInicio" class="form-control">
+                        </div>
+
+                    </div>
+
+                    <div class="form-group">
+
+                        <label>Hora Fin</label>
+                        <div class="input-group">
+                            <span class="input-group-addon" id="usernameicon"><i class="fa-solid fa-circle-user" style="color: chartreuse"></i></span>
+                            <input type="time" name="HoraFin" class="form-control">
+                        </div>
+
+                    </div>
+
+                    <div class="form-group">
+
+                        <label>Descripcion</label>
+                        <div class="input-group">
+                            <span class="input-group-addon" id="usernameicon"><i class="fa-solid fa-circle-user" style="color: chartreuse"></i></span>
+                            @Html.TextBoxFor(model => model.Descripcion, new { @class = "form-control", @id = "txtUserName" })
+                        </div>
+
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-primary">Save changes</button>
+                </div>
+            </div>
+        </div>
     </div>
 </div>
 

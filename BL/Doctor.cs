@@ -137,7 +137,7 @@ namespace BL
             {
                 using (DL.DoctorPacienteEntities context = new DL.DoctorPacienteEntities())
                 {
-                    int query = context.PacienteDelete(idDoctor);
+                    int query = context.DoctorDelete(idDoctor);
                     if (query > 0)
                     {
                         result.Correct = true;

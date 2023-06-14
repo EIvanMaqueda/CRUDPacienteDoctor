@@ -1,0 +1,55 @@
+﻿@model ML.Doctor
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<link rel="stylesheet" href="~/Content/Cards.css" asp-append-version="true" />
+<div class="row">
+    <h2>Doctores</h2>
+</div>
+<br />
+<div class="row">
+    <div style="float:right">
+        @Html.ActionLink("Agregar", "Form", "Doctor", htmlAttributes: new { @class = "btn btn-success" })
+    </div>
+</div>
+<br />
+<div class="row">
+    @foreach (ML.Doctor doctor in Model.Doctores)
+    {
+        <div class="colm col-lg-4">
+            <div class="card">
+                <div class="card-header">
+
+                    <img id="Img" src="data:image/*;base64,@doctor.Imagen" style="width:315px ; height:220px" />
+
+                </div>
+
+                <div class="card-body">
+                    <h2 class="name">@doctor.Nombre</h2>
+                    <h4 class="job-title">Doctor</h4>
+                    <div class="bio">@doctor.Descripcion</div>
+                </div>
+
+                <div class="card-footer">
+                    <div class="stats">
+                        <div class="stat">
+                            <span class="label"><a href="@Url.Action("Form", "Doctor", new { IdDoctor = doctor.IdDoctor })">Actualizar</a></span>
+                            <span class="value"><i class="bi bi-arrow-clockwise"></i></span>
+                        </div>
+                        <div class="stat">
+                            <span class="label"></span>
+                            <span class="value"></span>
+                        </div>
+                        <div class="stat">
+                            <span class="label"><a href="@Url.Action("Delete", "Doctor", new { IdDoctor=doctor.IdDoctor })" onclick="return confirm('Estas seguro que deseas eliminar este registro?');">Eliminar</a></span>
+                            <span class="value"><i class="bi bi-trash-fill"></i></span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    }
+
+</div>
+

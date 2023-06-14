@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="DoctorPacienteModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="DoctorPacienteModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="Cita">
           <Key>
             <PropertyRef Name="IdCita" />
@@ -116,7 +116,7 @@
         </Function>
         <Function Name="PacienteUpdate" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="nombre" Type="varchar" Mode="In" />
-          <Parameter Name="imagen" Type="varchar" Mode="In" />
+          <Parameter Name="imagen" Type="varchar(max)" Mode="In" />
           <Parameter Name="descripcion" Type="text" Mode="In" />
           <Parameter Name="idPaciente" Type="int" Mode="In" />
         </Function>
@@ -133,8 +133,7 @@
             <End Role="Cita" EntitySet="Cita" />
           </AssociationSet>
         </EntityContainer>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="DoctorPacienteModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -215,11 +214,11 @@
             <Parameter Name="descripcion" Mode="In" Type="String" />
           </FunctionImport>
           <FunctionImport Name="CitaDelete">
-            <Parameter Name="idCita" Mode="In" Type="Int32" />
+          <Parameter Name="idCita" Mode="In" Type="Int32" />
           </FunctionImport>
           <FunctionImport Name="CitaGetAll" ReturnType="Collection(DoctorPacienteModel.CitaGetAll_Result)" />
           <FunctionImport Name="CitaGetById" ReturnType="Collection(DoctorPacienteModel.CitaGetById_Result)">
-            <Parameter Name="IdCita" Mode="In" Type="Int32" />
+          <Parameter Name="IdCita" Mode="In" Type="Int32" />
           </FunctionImport>
           <FunctionImport Name="CitaUpdate">
             <Parameter Name="idDoctor" Mode="In" Type="Int32" />
@@ -235,11 +234,11 @@
             <Parameter Name="descripcion" Mode="In" Type="String" />
           </FunctionImport>
           <FunctionImport Name="DoctorDelete">
-            <Parameter Name="IdDoctor" Mode="In" Type="Int32" />
+          <Parameter Name="IdDoctor" Mode="In" Type="Int32" />
           </FunctionImport>
           <FunctionImport Name="DoctorGetAll" ReturnType="Collection(DoctorPacienteModel.DoctorGetAll_Result)" />
           <FunctionImport Name="DoctorGetById" ReturnType="Collection(DoctorPacienteModel.DoctorGetById_Result)">
-            <Parameter Name="idDoctor" Mode="In" Type="Int32" />
+          <Parameter Name="idDoctor" Mode="In" Type="Int32" />
           </FunctionImport>
           <FunctionImport Name="DoctorUpdate">
             <Parameter Name="nombre" Mode="In" Type="String" />
@@ -249,7 +248,7 @@
           </FunctionImport>
           <FunctionImport Name="GetAll" ReturnType="Collection(DoctorPacienteModel.GetAll_Result)" />
           <FunctionImport Name="GetById" ReturnType="Collection(DoctorPacienteModel.GetById_Result)">
-            <Parameter Name="idPaciente" Mode="In" Type="Int32" />
+          <Parameter Name="idPaciente" Mode="In" Type="Int32" />
           </FunctionImport>
           <FunctionImport Name="PacienteAdd">
             <Parameter Name="nombre" Mode="In" Type="String" />
@@ -257,11 +256,11 @@
             <Parameter Name="descripcion" Mode="In" Type="String" />
           </FunctionImport>
           <FunctionImport Name="PacienteDelete">
-            <Parameter Name="idPaciente" Mode="In" Type="Int32" />
+          <Parameter Name="idPaciente" Mode="In" Type="Int32" />
           </FunctionImport>
           <FunctionImport Name="PacienteGetAll" ReturnType="Collection(DoctorPacienteModel.PacienteGetAll_Result)" />
           <FunctionImport Name="PacienteGetById" ReturnType="Collection(DoctorPacienteModel.PacienteGetById_Result)">
-            <Parameter Name="idPaciente" Mode="In" Type="Int32" />
+          <Parameter Name="idPaciente" Mode="In" Type="Int32" />
           </FunctionImport>
           <FunctionImport Name="PacienteUpdate">
             <Parameter Name="nombre" Mode="In" Type="String" />

@@ -13,5 +13,6 @@ namespace ML
         public string Imagen { get; set; }
         public string Descripcion { get; set; }
         public List<object> Pacientes { get; set; }
+        public List<object> Doctores { get; set; }
     }
 }
